@@ -1,0 +1,78 @@
+/* River. IT Solutions - style.css (adaptive, responsive) */
+
+:root{
+  --accent:#ff7a00;
+  --bg:#f6f7f9;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --dark:#0b1220;
+  --gap:20px;
+  --max-width:1440px;
+}
+*{box-sizing:border-box}
+html{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; -webkit-font-smoothing:antialiased;}
+body{margin:0;background:var(--bg);color:var(--dark);line-height:1.45;}
+a{color:var(--accent);text-decoration:none}
+.container{width:90%;max-width:var(--max-width);margin:0 auto;padding:28px 0;transition:width .25s ease}
+@media(min-width:1440px){.container{width:80%}}
+
+/* NAV */
+.header{background:var(--card);border-bottom:1px solid rgba(12,17,25,.04);position:sticky;top:0;z-index:60;}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800}
+.logo .dot{color:var(--accent);margin-left:2px}
+.nav-links{display:flex;gap:18px;align-items:center}
+.nav-links a{font-weight:600;color:var(--dark)}
+.menu-btn{display:none;background: #90d5ff;border:0;font-size:1.25rem; border-radius: 8px;}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 480px;gap:28px;align-items:center;padding:28px 0}
+.hero-card{background:var(--card);padding:28px;border-radius:12px;box-shadow:0 8px 28px rgba(10,15,25,.06)}
+h1{font-size:clamp(1.6rem,2.6vw,2.4rem);margin:0 0 8px}
+.lead{font-size:clamp(0.95rem,1.4vw,1.05rem);color:var(--muted)}
+
+/* MARQUEE */
+.marquee{display:flex;gap:18px;white-space:nowrap;overflow:auto;padding:12px 0}
+.marquee .item{display:inline-flex;align-items:center;justify-content:center;min-width:160px;padding:8px 14px;background:var(--card);border-radius:10px;box-shadow:0 6px 20px rgba(10,15,25,.04)}
+
+/* PROJECTS */
+.section-title{display:flex;justify-content:space-between;align-items:end;margin-bottom:12px}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.project-card{background:var(--card);padding:16px;border-radius:10px;box-shadow:0 10px 30px rgba(10,15,25,.04);display:flex;flex-direction:column;gap:10px}
+.project-card img{width:100%;height:180px;object-fit:cover;border-radius:8px}
+
+/* TWO-COL */
+.two-col{display:grid;grid-template-columns:1fr 360px;gap:20px}
+
+/* FORMS */
+.form-card{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 8px 20px rgba(10,15,25,.04)}
+.input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e7e7ee;font-size:1rem}
+
+/* FOOTER */
+footer{margin-top:36px;padding:24px 0;color:var(--muted);text-align:center;background: rgb(241, 239, 237); border-top-left-radius: 70px; border-top-right-radius: 70px;}
+
+/* LAYOUT HELPERS */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;grid-auto-rows:auto}
+  .projects-grid{grid-template-columns:repeat(2,1fr)}
+  .two-col{grid-template-columns:1fr 1fr}
+  .menu-btn{display:block}
+  .nav-links{display:none;flex-direction: column;width: 100px;position:absolute;right:20px;top:64px;background: var(--card); padding:12px;border-radius:20px;box-shadow:0 8px 20px rgba(10,15,25,.06);align-items: flex-start;}
+}
+@media(max-width:600px){
+  .container{width:95%}
+  .projects-grid{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
+  .hero{padding:12px 0}
+  .marquee{overflow:auto}
+}
+
+/* utility */
+.center{text-align:center}
+.small{font-size:0.9rem;color:var(--muted)}
+.btn{display:inline-block;padding:10px 14px;border-radius:8px;background:var(--accent);color:#fff;font-weight:700}

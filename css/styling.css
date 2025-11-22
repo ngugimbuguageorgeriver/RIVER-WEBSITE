@@ -1,0 +1,72 @@
+/* EFFECT ON HEADER FOR HOVER AND SCROLL ...................                                                              */
+
+    .header {
+        background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 0%, rgb(248, 226, 202) 100%);
+        background-size: 100% 300%;   /* make it taller for animation */
+        background-position: top;     /* start showing white */
+        transition: background-position 0.6s ease;
+    }
+
+    .header:hover {
+        background-position: bottom;
+    }
+    .header.scrolled {
+        background-position: bottom;   
+    }
+
+/* BACK TO TOP EFFECT                 ...................                                                              */
+
+    /* Back to top button */
+    #backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 12px 18px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background: #90d5ff;
+    color: black;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, background 0.5s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Bounce keyframes */
+    @keyframes bounceIn {
+    0%   { transform: translateY(100px); opacity: 0; }
+    60%  { transform: translateY(-20px); opacity: 1; }
+    80%  { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+    }
+
+    /* Show button + bounce animation */
+    #backToTop.show {
+    opacity: 1;
+    pointer-events: auto;
+    animation: bounceIn 0.6s ease;
+    }
+
+    #backToTop:hover {
+    background: #9b9c9c;
+    }
+
+/* IMAGE RESPONSIVENESS EFFECT                 ...................   */ 
+    .project-card img {
+        height: 350px;
+        object-fit: scale-down;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+        .project-card img { object-fit: cover;}
+    }
+    @media(max-width:600px){
+        .project-card img { object-fit: cover;}
+    }
+
+
+/* NAVBAR RESPONSIVENESS EFFECT                 ...................   */ 
+
