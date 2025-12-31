@@ -1,0 +1,62 @@
+// RIVER WEBSITE/backend/prisma/schema.prisma
+
+model UserRole {
+    id String @id @default(uuid())
+    userId String
+    role String
+    grantedBy String?
+    expiresAt DateTime?
+    createdAt DateTime @default(now())
+
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+
+    @@unique([userId, role], name: "userId_role")
+}
+
+
+
+
+model User {
+    id String @id @default(uuid())
+    email String @unique
+    passwordHash String
+    isActive Boolean @default(true)
+    mfaEnabled Boolean @default(false)
+    mfaSecret String?
+    
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    roles UserRole[]
+    devices Device[]
+}
+
+
+
+
+
+
+model AuditLog {
+    id String @id @default(uuid())
+    ts DateTime @default(now())
+    actorId String? // user who triggered the action
+    action String
+    resource Json?
+    decision String
+    details Json?
+
+
+    @@index([actorId])
+}
+
+
+model Device {
+    id String @id
+    userId String
+    trusted Boolean @default(false)
+    lastUsedAt DateTime @default(now())
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+
